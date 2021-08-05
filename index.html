@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+  <div id="info">
+
+  </div>
+    <script>
+const xhr=new XMLHttpRequest();
+xhr.open("Get","https://restcountries.eu/rest/v2/name/nepal",true);
+xhr.send();
+xhr.addEventListener("load",function(){
+   const [data]=JSON.parse(this.responseText);
+const htmlData=`
+<div class="card">
+  <img class="card-img-top" src=${data.flag} alt="Card image cap"
+  style="padding:20px;height:300px">
+  <div class="card-body" style="text-align:center">
+    <h5 class="card-title">${data.name}</h5>
+    <p class="card-text">Capital: ${data.capital}.</p>
+  </div>
+  <hr/>
+
+  <table>
+    <thead>
+    <tr>
+       
+    <td><b>${data.nativeName}</b></td>
+    <td><b>${data.population}</b></td>
+    <td><b>${data.demonym}</b></td>
+</tr>
+</thead>
+<tbody>
+    <tr>
+        <td>NativeName</td>
+        <td>Population</td>
+        <td>Demonym</td>
+        </tr>
+    </tbody>
+</table>    
+
+</div>
+`
+ 
+document.getElementById("info").innerHTML=htmlData;
+});
+    </script>
+    <script src="bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</body>
+
+</html>
