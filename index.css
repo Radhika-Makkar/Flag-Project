@@ -8,3 +8,10 @@ td{
     justify-content: center;
     align-items: center;
 }
+@media screen and (max-width: 600px) {
+    #info {
+  height:25%;
+  width:80%;
+  margin:20% auto;
+    }
+  }
